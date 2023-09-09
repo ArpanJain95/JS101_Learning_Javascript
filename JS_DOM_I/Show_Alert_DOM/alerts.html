@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Showing Alerts</title>
+	</head>
+	<body>
+        <input type="text" placeholder="First Name" id="firstName">
+        <input type="text" placeholder="Last Name" id="lastName">
+		<button onclick="showFirstName()">FIRSTNAME</button>
+		<button onclick="showLastName()">LASTNAME</button>
+		<button onclick="showFullName()">FIRSTNAME LASTNAME</button>
+		<script type="text/javascript">
+            let fName = document.getElementById("firstName");
+            let lName = document.getElementById("lastName");
+            function showFirstName() {
+			    // Complete to show an alert with your first name 
+                alert(fName.value);
+			}
+
+            function showLastName() {
+                // Complete to show an alert with your last name  
+                alert(lName.value);           
+            }
+
+            function showFullName() {
+                // Complete to show an alert with your full name (firstname lastname)
+                alert(fName.value + " " + lName.value);
+                                
+            }
+        </script>
+	</body>
+</html>

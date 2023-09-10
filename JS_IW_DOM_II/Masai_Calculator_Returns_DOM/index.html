@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masai Calculator</title>
+    <style>
+        #display{
+            font-family: 'Times New Roman', Times, serif;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        #disResult{
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 5px;
+            text-align: right;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #numButton{
+            width: 100%;
+            height: 70%;
+            margin: auto;
+            margin-top: 10%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        
+        button{
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            font-size: 16px;
+            font-family: 'Times New Roman', Times, serif;
+            border-radius: 5px;
+            border: none;
+            background-color: #ffffff;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        body{
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            height: 350px;
+            width: 275px;
+            margin: auto;
+            padding: 50px 40px 50px 40px;
+            margin-top: 60px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!--input and output-->
+    <section>
+        <div id="display">
+            <input type="text" id="disResult">
+        </div>
+    </section>
+    <!--numeric & symbols buttons-->
+    <section id="numButton"></section>
+    <!-- initiate result button
+    <section>Result</section>
+    reset button
+    <section>Reset</section> -->
+</body>
+<script>
+    let numButtons = document.getElementById("numButton");
+    let result = document.getElementById("disResult");
+    let numArr = [1, 2, 3, "/", 4, 5, 6, "*", 7, 8, 9, "-", "C", 0, "=", "+"];
+
+    numArr.forEach(value => {
+        let button = document.createElement("button");
+        button.textContent = value;
+        button.addEventListener("click", function(){
+            handleButtonClick(value);
+        });
+        numButtons.appendChild(button);
+    });
+
+    let currentInput1 = "";
+    let currentInput2 = "";
+    let currentOperator1 = "";
+    function handleButtonClick(value){
+        if(value >=0 && value <= 9 && currentOperator1 !== ""){
+            currentInput1 += value;
+        }else if(value === "+" || value === "-" || value === "*" || value === "/"){
+            currentOperator1 = value;
+        }else if(currentInput1 === "" && currentOperator1 === "" && value >=0 && value <= 9){
+            currentInput2 += value;
+        }else if (value === "=") {
+            calculateResult();
+        }else if (value === "C"){
+            currentInput1 = "";
+            currentInput2 = "";
+            currentOperator1 = ""
+        }
+        result.value = currentInput1 + currentOperator1 + currentInput2;
+    }
+    function calculateResult() {
+        let results;
+        switch(currentOperator1){
+            case "+":
+                results = +currentInput1 + +currentInput2;
+                break;
+            case "-":
+                results = +currentInput1 - +currentInput2;
+                break;
+            case "*":
+                results = +currentInput1 * +currentInput2;
+                break;
+            case "/":
+                if (+currentInput2 === 0) {
+                    results = "Error";
+                } else {
+                    results = +currentInput1 / +currentInput2;
+                }
+                break;
+            default:
+                results = "Error";
+                break;
+        }
+        result.value=results
+        currentInput1=results.toString();
+        currentInput2="";
+        currentOperator1="";
+    }
+</script>
+</html>

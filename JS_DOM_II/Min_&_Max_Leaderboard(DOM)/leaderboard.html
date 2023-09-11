@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+        }
+
+        .container{
+            margin: auto;
+            margin-top: 50px;
+            width: 350px;
+            height: auto;
+        }
+
+        .score-container{
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .score-box{
+            width: 100px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            border: black 2px solid;
+        }
+
+        #min-score{
+            background-color: red;
+        }
+
+        #max-score{
+            background-color: green;
+        }
+
+        .result-box{
+            font-size: 18px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #current-score{
+            background-color: #b6b5b5;
+            border: black 2px solid;
+            font-size: 40px;
+            width: 200px;
+            height: 60px;
+        }
+
+        .number-buttons{
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            justify-items: center;
+        }
+
+        .number-buttons button:first-child,
+        .number-buttons button:nth-child(3),
+        .number-buttons button:nth-child(7),
+        .number-buttons button:nth-child(9){
+            background-color: rgb(7, 112, 7);
+        }
+
+        button{
+            width: 60px;
+            height: 60px;
+            font-size: 18px;
+            border-color: black;
+            background-color: orange;
+        }
+
+        button:nth-child(10){
+            grid-column: 2;
+            background-color: rgb(196, 3, 196);
+        }
+
+        .iniaite{
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .enter{
+            color: white;
+            background-color: black;
+            border-color: black;
+            width: 60%;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="score-container">
+            <div>
+                <div class="score-box" id="min-score">0</div>
+                <p>MIN</p>
+            </div>
+            <div>
+                <div class="score-box" id="max-score">0</div>
+                <p>MAX</p>
+            </div>
+        </div>
+        <div class="result-box">
+            <p>Score</p>
+            <div id="current-score">#</div>
+        </div>
+        <div class="number-buttons">
+            <button onclick="addToScore(1)">1</button>
+            <button onclick="addToScore(2)">2</button>
+            <button onclick="addToScore(3)">3</button>
+            <button onclick="addToScore(4)">4</button>
+            <button onclick="addToScore(5)">5</button>
+            <button onclick="addToScore(6)">6</button>
+            <button onclick="addToScore(7)">7</button>
+            <button onclick="addToScore(8)">8</button>
+            <button onclick="addToScore(9)">9</button>
+            <button onclick="addToScore(0)">0</button>
+        </div>
+        <div class="iniaite">
+            <button onclick="submitScore()" class="enter">ENTER</button>
+        </div>
+    </div>
+
+    <script>
+        let currentScore = 0;
+        let minScore = 0;
+        let maxScore = 0;
+
+        function addToScore(number) {
+            currentScore = currentScore * 10 + number;
+            document.getElementById('current-score').textContent = currentScore;
+        }
+
+        
+        function submitScore() {
+            if (currentScore < minScore || minScore === 0) {
+                minScore = currentScore;
+                document.getElementById('min-score').textContent = minScore;
+            }
+            if (currentScore > maxScore) {
+                maxScore = currentScore;
+                document.getElementById('max-score').textContent = maxScore;
+            }
+            clearScore();
+        }
+
+        function clearScore() {
+            currentScore = 0;
+            document.getElementById('current-score').textContent = currentScore;
+        }
+    </script>
+</body>
+</html>

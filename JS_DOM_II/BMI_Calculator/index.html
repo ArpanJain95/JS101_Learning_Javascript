@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        body{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Check your BMI</h1>
+        <p>Enter your weight and height below to check your BMI results</p>
+    </section>
+    <section>
+        <p>Put you weight in here (KG)</p>
+        <input type="text" name="weight" placeholder="Weight(in kgs)" id="wtInput">
+        <p>And your height in here (CM)</p>
+        <input type="text" name="height" placeholder="Height(in cm)" id="htInput">
+        <br><br>
+        <button onclick="calculate()">Calculate BMI</button>
+        <h3 id="result"></h3>
+    </section>
+</body>
+</html>

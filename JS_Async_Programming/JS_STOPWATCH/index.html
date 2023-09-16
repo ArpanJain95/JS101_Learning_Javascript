@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <style>
+        section{
+            margin: auto;
+            margin-top: 100px;
+            width: 30%;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            border-radius: 10px;
+            padding: 20px;
+            color: #7a7a7a;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        hr{
+            border-color: #c4c4c4
+        }
+
+        #stopwatch{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 50px;
+            text-align: start;
+            margin-bottom: 10px;
+            color: #4e4e4e;
+            margin-left: 20px;
+        }
+
+        button{
+            margin-left: 10px;
+            align-items: center;
+            appearance: none;
+            background-color: #ffffff;
+            border-radius: 4px;
+            border-width: 0;
+            box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+            box-sizing: border-box;
+            color: #7a7a7a;
+            cursor: pointer;
+            display: inline-flex;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            height: 35px;
+            width: 90px;
+            justify-content: center;
+            line-height: 1;
+            list-style: none;
+            overflow: hidden;
+            padding-left: 16px;
+            padding-right: 16px;
+            position: relative;
+            text-align: left;
+            text-decoration: none;
+            transition: box-shadow .15s,transform .15s;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            will-change: box-shadow,transform;
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        button:focus{
+            box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+        }
+
+        button:hover{
+            box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+            transform: translateY(-2px);
+        }
+
+        button:active{
+            box-shadow: #D6D6E7 0 3px 7px inset;
+            transform: translateY(2px);
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Stopwatch</h1>
+        <hr>
+        <p><span id="stopwatch">0</span><strong> s</strong></p>
+        <button onclick="start()">START</button>
+        <button onclick="pause()">PAUSE</button>
+        <button onclick="reset()">RESET</button>
+    </section>
+</body>
+</html>
+<script>
+    let display = document.getElementById("stopwatch");
+    let seconds = 0;
+    let running = false;
+    let timer;
+
+    function start(){
+        if(running==false){
+            running=true;
+            timer = setInterval(updateWatch, 1000);
+        }
+    }
+
+    function pause(){
+        running = false;
+        clearInterval(timer);
+    }
+
+    function reset(){
+        running = false;
+        clearInterval(timer);
+        seconds = 0;
+        updateWatch()
+    }
+
+    function updateWatch(){
+        if(running==true){
+            seconds++;
+        }
+        display.textContent=seconds;
+    }
+
+</script>

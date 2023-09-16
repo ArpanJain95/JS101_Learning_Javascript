@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLIDE SHOW</title>
+    <style>
+    .slideshow-container{
+        position: relative;
+        max-width: 600px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .slide{
+        display: none;
+    }
+
+    img{
+        width: 100%;
+        height: auto;
+    }
+
+    button{
+        display: inline-block;
+        margin: 10px;
+    }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <div class="slide">
+            <img src="https://thepouchstory.com/cdn/shop/files/Makeup_Studio_Red_Cosmetics_Strokes_Logo_500_x_150_px_2.png?v=1689070063&width=200" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="https://thepouchstory.com/cdn/shop/files/11_59200008-5964-4fff-b51e-325cd25b8280.png?v=1690728437&width=823" alt="Image 2">
+        </div>
+        <div class="slide">
+            <img src="https://thepouchstory.com/cdn/shop/files/4_72aa40f3-e6ee-4fbf-8acd-22f9ca0d16a6.png?v=1690728312&width=823" alt="Image 2">
+        </div>
+        <div class="slide">
+            <img src="https://thepouchstory.com/cdn/shop/files/3_3884b7a6-7800-46a0-962b-6f37b0fa408f.png?v=1690727310&width=823" alt="Image 2">
+        </div>
+        <div class="slide">
+            <img src="https://thepouchstory.com/cdn/shop/files/7_9bfcfab7-e8df-4338-93c2-6d4b5ab8ef32.png?v=1690729756&width=823" alt="Image 2">
+        </div>
+        <div class="slide">
+            <img src="https://thepouchstory.com/cdn/shop/files/23_42e8d0e9-ab96-4ea4-9a79-ab9dc5456287.png?v=1690730838&width=823" alt="Image 2">
+        </div>
+        <div class="slide">
+            <img src="https://thepouchstory.com/cdn/shop/files/30.png?v=1690730183&width=823" alt="Image 2">
+        </div>
+        <div class="slide">
+            <img src="https://thepouchstory.com/cdn/shop/files/22.png?v=1687865132&width=823" alt="Image 2">
+        </div>
+        <div class="slide">
+            <img src="https://thepouchstory.com/cdn/shop/files/1_325bcb77-2698-428e-80c4-c440f419d782.png?v=1690730939&width=823" alt="Image 2">
+        </div>
+        <div class="slide">
+            <img src="https://thepouchstory.com/cdn/shop/files/2.png?v=1687852930&width=823" alt="Image 2">
+        </div>
+        </div>
+        <button id="startStopButton">Start</button>
+        <button id="prevButton">Previous</button>
+        <button id="nextButton">Next</button>
+</body>
+</html>
+<script>
+const slides = document.querySelectorAll('.slide');
+let currentSlideIndex = 0;
+let slideshowInterval;
+const startStopButton = document.getElementById('startStopButton');
+const prevButton = document.getElementById('prevButton');
+const nextButton = document.getElementById('nextButton');
+
+function showSlide(index){
+    slides.forEach((slide, i) => {
+        if (i === index) {
+            slide.style.display = 'block';
+        } else {
+            slide.style.display = 'none';
+        }
+    });
+}
+
+function startSlideshow(){
+    startStopButton.textContent = 'Stop';
+    slideshowInterval = setInterval(() => {
+        currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+        showSlide(currentSlideIndex);
+    }, 2000);
+}
+
+function stopSlideshow(){
+    startStopButton.textContent = 'Start';
+    clearInterval(slideshowInterval);
+}
+
+function handlePrevButton(){
+    stopSlideshow();
+    currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+    showSlide(currentSlideIndex);
+}
+
+function handleNextButton(){
+    stopSlideshow();
+    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+    showSlide(currentSlideIndex);
+}
+
+startStopButton.addEventListener('click', () => {
+    if (startStopButton.textContent === 'Start') {
+        startSlideshow();
+    } else {
+        stopSlideshow();
+    }
+});
+
+prevButton.addEventListener('click', handlePrevButton);
+nextButton.addEventListener('click', handleNextButton);
+
+showSlide(currentSlideIndex);
+startSlideshow();
+</script>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation Game</title>
+</head>
+<body>
+    Simulation Game
+</body>
+</html>
+<script>
+    // Car Simulation
+    function Vehicle(brand, model, speed, fuelType){
+        this.brand = brand;
+        this.model = model;
+        this.speed = speed;
+        this.fuelType = fuelType;
+    }
+
+    Vehicle.prototype.accelerate = function(increaseBy){
+        this.speed += increaseBy;
+    }
+
+    Vehicle.prototype.brake = function(decreaseBy){
+        this.speed -= decreaseBy;
+    }
+
+    Vehicle.prototype.refuel = function(){
+        console.log(this.model, "is refueling");
+    }
+
+    function Car(brand, model, speed, fuelType, numberOfWheels){
+        Vehicle.call(this, brand, model, speed, fuelType);
+        this.numberOfWheels = numberOfWheels;
+    }
+
+
+    Car.prototype = Object.create(Vehicle.prototype)
+
+    Car.prototype.honk = function(){
+        console.log("HONK! HONK!");
+    }
+
+    let Car1 = new Car("Mahindra", "Thar", 250, "Diesel", 4)
+    Car1.accelerate(30);
+    console.log(Car1)
+    Car1.brake(10);
+    Car1.refuel();
+    Car1.honk();
+    console.log(Car1);
+
+
+    // Airplane Simulation
+    function Airplane(brand, model, speed, fuelType, numberOfEngines, hasLandingGear){
+        Vehicle.call(this, brand, model, speed, fuelType);
+        this.numberOfEngines = numberOfEngines;
+        this.hasLandingGear = hasLandingGear;
+    }
+
+    Airplane.prototype = Object.create(Vehicle.prototype);
+    Airplane.prototype.takeOff = function(){
+        console.log(this.model, "taking off");
+    }
+
+    let Airplane1 = new Airplane("Boeing", "A47", 2000, "Aviation Fuel", 4, true);
+    console.log(Airplane1);
+    Airplane1.takeOff();
+    Airplane1.accelerate(150);
+    Airplane1.brake(500);
+    Airplane1.refuel();
+    console.log(Airplane1);
+</script>

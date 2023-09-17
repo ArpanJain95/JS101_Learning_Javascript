@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>AUTOMOBILE INHERITANCE MODEL</h1>
+</body>
+</html>
+<script>
+let objVehicle  = {
+  fuel: "petrol",
+  doors: 5,
+  wheels: 4,
+  start(){
+    console.log("Vehicle is starting");
+  },
+  stop(){
+    console.log("Vehicle is stoping");
+  }
+};
+
+function Car(brand, model, year, fuel){
+  this.brand = brand;
+  this.model = model;
+  this.year = year;
+  this.fuel = fuel || objVehicle.fuel;
+}
+
+Car.prototype = Object.create(objVehicle);
+
+Car.prototype.horn = function(){
+  console.log("Honk! Honk!")
+}
+
+function Car1(engine, gear, engineposition, speed, brand, model, year){
+  Car.call(this, brand, model, year);
+  // objVehicle.call(this);
+  this.engine = engine;
+  this.gear = gear;
+  this.engineposition = engineposition;
+  this.speed = speed;
+  for (let prop in objVehicle) {
+    if (objVehicle.hasOwnProperty(prop)) {
+      this[prop] = objVehicle[prop];
+    }
+  }
+}
+
+Car1.prototype = Object.create(Car.prototype);
+Car1.prototype.brake = function(){
+  this.speed -= 100;
+}
+
+let Car2 = new Car1("Inline", 5, "Front", 250, "Mahindra", "Thar", 2022)
+
+// let Car1 = new Car("Mahindra", "Thar", 2022);
+console.log(Car2);
+Car2.start();
+Car2.stop();
+Car2.horn();
+Car2.brake();
+// console.log(Car1.__proto__)
+</script>

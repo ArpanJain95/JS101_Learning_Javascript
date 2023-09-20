@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMER</title>
+    <style>
+        section{
+            margin: auto;
+            margin-top: 100px;
+            width: 30%;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            border-radius: 10px;
+            padding: 20px;
+            color: #7a7a7a;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        hr{
+            border-color: #c4c4c4
+        }
+
+        #hour,
+        #minute,
+        #second{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 50px;
+            text-align: start;
+            margin-bottom: 10px;
+            color: #4e4e4e;
+            margin-left: 20px;
+            width: 70px;
+            border: none;
+        }
+
+        button{
+            margin-left: 10px;
+            align-items: center;
+            appearance: none;
+            background-color: #ffffff;
+            border-radius: 4px;
+            border-width: 0;
+            box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+            box-sizing: border-box;
+            color: #7a7a7a;
+            cursor: pointer;
+            display: inline-flex;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            height: 35px;
+            width: 90px;
+            justify-content: center;
+            line-height: 1;
+            list-style: none;
+            overflow: hidden;
+            padding-left: 16px;
+            padding-right: 16px;
+            position: relative;
+            text-align: left;
+            text-decoration: none;
+            transition: box-shadow .15s,transform .15s;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            will-change: box-shadow,transform;
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        button:focus{
+            box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+        }
+
+        button:hover{
+            box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+            transform: translateY(-2px);
+        }
+
+        button:active{
+            box-shadow: #D6D6E7 0 3px 7px inset;
+            transform: translateY(2px);
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Timer</h1>
+        <hr>
+        <p><input type="text" placeholder="00" id="hour"><strong class="unit">h</strong><input type="text" id="minute" placeholder="00"><strong class="unit">m</strong><input type="text" id="second" placeholder="00"><strong class="unit">s</strong></p>
+        <button onclick="start()">START</button>
+        <button onclick="pause()">PAUSE</button>
+        <button onclick="reset()">RESET</button>
+    </section>
+</body>
+</html>
+<script>
+    // let display = document.getElementById("timer");
+    let hour = document.getElementById("hour");
+    let min = document.getElementById("minute");
+    let sec = document.getElementById("second");
+
+    let totalSeconds = 0;
+    let intervalId;
+
+    function start(){
+        const inputHours = parseInt(hour.value) || 0;
+        const inputMinutes = parseInt(min.value) || 0;
+        const inputSeconds = parseInt(sec.value) || 0;
+        totalSeconds = inputHours * 3600 + inputMinutes * 60 + inputSeconds;
+        updateDisplay();
+        intervalId = setInterval(function () {
+            if(totalSeconds > 0){
+                totalSeconds--;
+                updateDisplay();
+            }
+            else{
+                clearInterval(intervalId);
+                alert("Time up!");
+            }
+        }, 1000);
+    }
+    
+    function pause(){
+        clearInterval(intervalId);
+    }
+
+    function reset(){
+        clearInterval(intervalId);
+        totalSeconds = 0;
+        hour.value = "00";
+        min.value = "00";
+        sec.value = "00";
+        updateDisplay();
+    }
+
+    function updateDisplay(){
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+        hour.value = String(hours).padStart(2, "0");
+        min.value = String(minutes).padStart(2, "0");
+        sec.value = String(seconds).padStart(2, "0");
+    }
+</script>

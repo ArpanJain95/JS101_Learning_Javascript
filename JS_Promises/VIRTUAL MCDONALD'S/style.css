@@ -1,0 +1,82 @@
+body{
+    margin: 0;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+body h1 img{
+    height: 30px;
+    background-color: rgb(207, 11, 11);
+    padding-block: 8px;
+    border-radius: 10px;
+}
+
+body h1,
+body h1 img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#main{
+    margin: auto;
+    width: 90%;
+    /* border: 1px red solid; */
+    display: flex;
+    justify-content: space-around;
+}
+
+#foodList{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+#menu{
+    width: 60%;
+    border: 6px rgb(207, 11, 11) solid;
+    border-radius: 15px;
+    padding: 0px 30px 20px 0px;
+}
+
+#foodList li{
+    text-align: left;
+    display: flex;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    border-radius: 15px;
+    padding: 8px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#foodList li p{
+    font-weight: 500;
+}
+
+#foodList li img{
+    width: 85px;
+    height: 85px;
+}
+
+#orderDetails{
+    width: 30%;
+    border: 6px rgb(247, 224, 17) solid;
+    border-radius: 15px;
+    padding: auto;
+}
+
+#orderDetails img{
+    width: 80%;
+    height: auto;
+}
+
+#orderBtn{
+    width: 180px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(247, 224, 17, 0.712);
+    font-weight: 600;
+    font-size: 18px;
+    color: rgb(207, 11, 11);
+}

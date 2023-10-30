@@ -1,0 +1,95 @@
+body{
+    margin: 0;
+}
+
+#navbar{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    font-family: 'Poppins', sans-serif;
+}
+
+#main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.screen{
+    width: 275px;
+    height: 537px;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    overflow: hidden;
+    background-color: #0b001f;
+}
+
+#inNavbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #6739b7;
+    color: #fff;
+    padding-inline: 15px;
+    height: 45px;
+    margin: 0;
+}
+
+.refresh-button{
+    background: none;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+.inNum{
+    border-radius: 15px;
+    width: 90%;
+    border: #fff 0.5px solid;
+    background: none;
+    padding: 7px;
+    color: #fff;
+}
+
+#amountBank{
+    display: flex;
+    width: 95%;
+}
+
+.inAmount{
+    border: #fff 0.5px solid;
+    background: none;
+    padding: 7px;
+    color: #fff;
+    border-radius: 15px 0px 0px 15px;
+}
+
+.inBank{
+    border-radius: 0px 15px 15px 0px;
+    padding: 7px;
+    font-weight: bold;
+    font-size: 12px;
+    width: 30%;
+    background-color: #fff;
+}
+
+#button{
+    margin: 0px;
+    padding: 0px;
+}
+
+#button button{
+    border-radius: 15px;
+    padding: 7px;
+    font-weight: bold;
+    font-size: 12px;
+    width: 100%;
+    padding-inline: 50px;
+    background-color: #fff;
+}
+
+#output{
+    color: #fff;
+}

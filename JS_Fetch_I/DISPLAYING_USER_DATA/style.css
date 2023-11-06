@@ -1,0 +1,32 @@
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+h2{
+    text-align: center;
+}
+
+#wholeDiv{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.user-card {
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    transition: opacity 0.3s;
+}
+
+.user-card:hover {
+    opacity: 1;
+}
+
+.user_details {
+    display: none;
+}
+
+.user-card:hover .user_details {
+    display: block;
+    opacity: 1;
+}

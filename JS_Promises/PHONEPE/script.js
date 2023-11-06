@@ -4,7 +4,6 @@ document.getElementById('pay').addEventListener('click',() => {
 
     if (selectedBank && !isNaN(paymentAmount)){
         showProcessingUI();
-
         simulatePayment(selectedBank, paymentAmount)
             .then((paymentStatus) =>{
                 hideProcessingUI();

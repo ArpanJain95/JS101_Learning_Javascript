@@ -1,0 +1,55 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    color: #302f2f;
+    margin: 0;
+}
+
+#navbar{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 50px 0px 50px;
+    align-items: center;
+    height: 60px;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+    border-radius: 0px 0px 10px 10px;
+}
+
+#navbar input{
+    height: 30px;
+    width: 400px;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    border: none;
+    border-radius: 5px;
+    padding-inline: 15px;
+}
+
+#navbar button{
+    height: 30px;
+    width: 100px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+    border-radius: 5px;
+    background: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#navbar button:active{
+    background-color: #f5f5f5;
+    box-shadow: none;
+}
+
+#root{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px;
+}
+
+.wholeCard img{
+    width: 100%;
+    height: auto;
+}
+
+h3{
+    text-align: center;
+}

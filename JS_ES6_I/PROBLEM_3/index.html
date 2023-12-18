@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6-I Problem 3</title>
+</head>
+<body>
+    <h1>Convert Character Case</h1>
+</body>
+</html>
+<script>
+    const changeCharCase = char => char.toLowerCase()
+
+    const changeWordCase = word => {
+        const characters = word.split("");
+        const lowerCaseCharacters = characters.map(changeCharCase).join("");
+        return lowerCaseCharacters;
+    }
+
+    const changeArrayCase = array => array.map(changeWordCase)
+
+    const inputArray = ["MA", "SA", "I", "SCH", "OOL"];
+
+    console.log(changeArrayCase(inputArray));
+</script>
